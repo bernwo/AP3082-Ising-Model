@@ -35,10 +35,13 @@ useful.
 
 We note that in the first week, there is not much structure in the repository yet. However, in the upcoming weeks, we plan to clean up the directory as the direction of the project becomes clearer.
 
-Also note that all of the Metropolis functions can be found in `Metropolis_functions.py`.
+**Also note that all of the Metropolis functions can be found in `Metropolis_functions.py`.** We will repeat this several times to avoid confusion.
 
 ### Week 1 Milestones
 
+* **Implementing the Metropolis Algorithm**
+  * We mention that where the algorithm was implemented in section [Introduction to the Metropolis Algorithm](#Introduction-to-the-Metropolis-Algorithm).
+  * Then, the building blocks of the whole algorithm are explained throughout the whole of [Week 1](#week-1).
 * **Finding out about Metropolis Algorithm**
   * Achieved in section [Introduction to the Metropolis Algorithm](#Introduction-to-the-Metropolis-Algorithm)
 * **Find out how to calculate the total energy and energy of individual spin**
@@ -66,6 +69,8 @@ The pseudo code to each run of the [Metropolis algorithm](https://www.asc.ohio-s
 
 Note that the *E* here refers to the *total energy* of the system.
 
+The whole algorithm was packaged into `Metropolis2D(N,spins,J,T,h,creategif=False,plot_interval=100)` in `Metropolis_functions.py`.
+
 ### Calculating the total energy of the system
 
 Let us denote $`E_{tot}`$ as the **total energy** for clarity.
@@ -83,9 +88,7 @@ Then, the **total energy** is just the sum of every element in the 2D array as i
 
 ### Flipping a random single spin
 
-This was implemented in the function
-
-
+This was implemented in the function `flip_a_spin(spins)`. To choose a random spin, we use `numpy.random.randint()` to randomly index a spin on the lattice. Then, to flip the sign of the spin, we used `numpy.negative`.
 
 ### Results of the Metropolis(2D) Ising model simulation
 
