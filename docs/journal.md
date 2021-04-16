@@ -32,7 +32,27 @@ You will find how to include [links](https://docs.gitlab.com/ee/user/markdown.ht
 useful.
 
 ## Week 1
-(due before 21 April)
+
+### Introduction to the Metropolis Algorithm
+
+The pseudo code to each run of the [Metropolis algorithm](https://www.asc.ohio-state.edu/braaten.1/statphys/Ising_MatLab.pdf) can be written as:
+
+* Calculate E<sub>current</sub>.
+* Choose a random spin to flip its sign.
+* Calculate E<sub>trial</sub>.
+* Calculate ΔE=E<sub>current</sub>-E<sub>trial</sub>.
+* If ΔE ≤ 0
+  * set E<sub>current</sub>=E<sub>trial</sub>
+* Else
+  * Choose random number *r* ∈ [0,1].
+  * Compute W=exp(-βΔE)
+  * If r < W
+    * set E<sub>current</sub>=E<sub>trial</sub>
+  * Else
+    * Do nothing.
+
+Note that the *E* here refers to the *total energy* of the system.
+
 
 
 ## Week 2
