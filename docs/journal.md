@@ -41,7 +41,7 @@ We note that in the first week, there is not much structure in the repository ye
 
 * **Implementing the Metropolis Algorithm**
   * We mention that where the algorithm was implemented in section [Introduction to the Metropolis Algorithm](#Introduction-to-the-Metropolis-Algorithm).
-  * Then, the building blocks of the whole algorithm are explained throughout the whole of [Week 1](#week-1).
+  * Then, the *main* building blocks of the whole algorithm are explained throughout the whole of [Week 1](#week-1).
 * **Finding out about Metropolis Algorithm**
   * Achieved in section [Introduction to the Metropolis Algorithm](#Introduction-to-the-Metropolis-Algorithm)
 * **Find out how to calculate the total energy and energy of individual spin**
@@ -54,7 +54,7 @@ We note that in the first week, there is not much structure in the repository ye
 The pseudo code to each run of the [Metropolis algorithm](https://www.asc.ohio-state.edu/braaten.1/statphys/Ising_MatLab.pdf) can be written as:
 
 * Calculate E<sub>current</sub>.
-* Choose a random spin to flip its sign.
+* Choose a [random spin to flip its sign](#Flipping-a-random-single-spin).
 * Calculate E<sub>trial</sub>.
 * Calculate ΔE=E<sub>current</sub>-E<sub>trial</sub>.
 * If ΔE ≤ 0
@@ -65,7 +65,7 @@ The pseudo code to each run of the [Metropolis algorithm](https://www.asc.ohio-s
   * If r < W
     * set E<sub>current</sub>=E<sub>trial</sub>
   * Else
-    * Do nothing.
+    * Do nothing. (i.e. the lattice stays the same)
 
 Note that the *E* here refers to the *total energy* of the system.
 
@@ -91,6 +91,8 @@ Then, the **total energy** is just the sum of every element in the 2D array as i
 This was implemented in the function `flip_a_spin(spins)`. To choose a random spin, we use `numpy.random.randint()` to randomly index a spin on the lattice. Then, to flip the sign of the spin, we used `numpy.negative`.
 
 ### Results of the Metropolis(2D) Ising model simulation
+
+The `.gif`'s in this section is obtain by running `generate_Ising_gif.py`. Note the dependency on `imageio` as you might be lacking this library. The `imageio` library is used in conjunction with `os` and `matplotlib.pyplot` to obtain plots and convert them into an animated `gif`.
 
 #### Ising Model evolution with external magnetic field, h=0
 
