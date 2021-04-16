@@ -53,7 +53,15 @@ The pseudo code to each run of the [Metropolis algorithm](https://www.asc.ohio-s
 
 Note that the *E* here refers to the *total energy* of the system.
 
+### Calculating the total energy of the system
 
+### Results of the Metropolis(2D) Ising model simulation
+
+![MetropolisIsing1](simulation_images/../../simulation_images/Metropolis_J2_TTc0.01_h0.gif)  
+
+![MetropolisIsing2](simulation_images/../../simulation_images/Metropolis_J2_TTc1.5_h0.gif)  
+
+![MetropolisIsing3](simulation_images/../../simulation_images/Metropolis_J2_TTc1.5_h20.gif)  
 
 ## Week 2
 (due before 28 April)
