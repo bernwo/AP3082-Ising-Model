@@ -33,6 +33,15 @@ useful.
 
 ## Week 1
 
+### Week 1 Milestones
+
+* **Finding out about Metropolis Algorithm**
+  * Achieved in section [Introduction to the Metropolis Algorithm](#Introduction-to-the-Metropolis-Algorithm)
+* **Find out how to calculate the total energy and energy of individual spin**
+  * Achieved in section [Calculating the total energy of the system](#Calculating-the-total-energy-of-the-system)
+* **Obtain evolution of Ising model under the Metropolis algorithm**
+  * Achieved in section [Results of the Metropolis(2D) Ising model simulation](#Results-of-the-Metropolis(2D)-Ising-model-simulation)
+
 ### Introduction to the Metropolis Algorithm
 
 The pseudo code to each run of the [Metropolis algorithm](https://www.asc.ohio-state.edu/braaten.1/statphys/Ising_MatLab.pdf) can be written as:
@@ -55,13 +64,13 @@ Note that the *E* here refers to the *total energy* of the system.
 
 ### Calculating the total energy of the system
 
-Let us denote $`E_{tot}`$ as the total energy for clarity.
+Let us denote $`E_{tot}`$ as the **total energy** for clarity.
 
 The equation to calculate $`E_{tot}`$ is given by:
 
 $`E_{tot}=\sum^{N\times N}_{i=1}E_i`$
 
-where $`E_{i}`$ is the energy of an individual spin $`E_{i}=-\frac{J}{2}\sum_{j=±1}s_is_j`$.
+where $`E_{i}`$ is the **energy of an individual spin** $`E_{i}=-\frac{J}{2}\sum_{j=±1}s_is_j`$.
 
 ### Results of the Metropolis(2D) Ising model simulation
 
