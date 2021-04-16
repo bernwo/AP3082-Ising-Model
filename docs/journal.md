@@ -57,9 +57,12 @@ Note that the *E* here refers to the *total energy* of the system.
 
 ### Results of the Metropolis(2D) Ising model simulation
 
-<img src="simulation_images/Metropolis_J2_TTc0.01_h0.gif" width="256" height="256" />
+#### Ising Model evolution with external magnetic field, h=0
 
-<img src="simulation_images/Metropolis_J2_TTc1.5_h0.gif" width="256" height="256" />
+<img src="simulation_images/Metropolis_J2_TTc0.01_h0.gif" width="256" height="256" />
+<img src="simulation_images/Metropolis_J2_TTc1.5_h0.gif" width="256" height="256" /><br />
+
+#### Ising Model evolution with external magnetic field, h=10
 
 <img src="simulation_images/Metropolis_J2_TTc1.5_h20.gif" width="256" height="256" />
 
