@@ -114,7 +114,7 @@ In this section we see the Ising model evolution for $`T<T_c`$ (left) and $`T>T_
 <img src="simulation_images/Metropolis_J2_TTc0.01_h0.gif" width="256" height="256" />
 <img src="simulation_images/Metropolis_J2_TTc1.5_h0.gif" width="256" height="256" /><br />
 
-#### Ising Model evolution with external magnetic field, h=10
+#### Ising Model evolution with external magnetic field, h=20
 
 In the previous section we saw the Ising model evolution for $`T>T_c`$ with $`h=0`$ stayed chaotic. Now, we still use the same $`T`$ while turning on the external magnetic field and set $`h=20`$. As we can see below, eventhough we are in the $`T>T_c`$ regime, the the system stabilised in fully positive spins. This behaviour is expected because the presence of external magnetic field destroys symmetry.
 
