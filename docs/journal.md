@@ -40,10 +40,10 @@ We note that in the first week, there is not much structure in the repository ye
 ### Week 1 Milestones
 
 * **Implementing the Metropolis Algorithm**
-  * We mention that where the algorithm was implemented in section [Introduction to the Metropolis Algorithm](#Introduction-to-the-Metropolis-Algorithm).
+  * We mention that where the algorithm was implemented in section [Introduction to the Metropolis Algorithm](#introduction-to-the-metropolis-algorithm).
   * Then, the *main* building blocks of the whole algorithm are explained throughout the whole of [Week 1](#week-1).
 * **Finding out about Metropolis Algorithm**
-  * Achieved in section [Introduction to the Metropolis Algorithm](#Introduction-to-the-Metropolis-Algorithm)
+  * Achieved in section [Introduction to the Metropolis Algorithm](#introduction-to-the-metropolis-algorithm)
 * **Find out how to calculate the total energy and energy of individual spin**
   * Achieved in section [Calculating the total energy of the system](#Calculating-the-total-energy-of-the-system)
 * **Find exact critical temperature of the 2D square lattice Ising Model**
