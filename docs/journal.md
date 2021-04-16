@@ -46,8 +46,12 @@ We note that in the first week, there is not much structure in the repository ye
   * Achieved in section [Introduction to the Metropolis Algorithm](#Introduction-to-the-Metropolis-Algorithm)
 * **Find out how to calculate the total energy and energy of individual spin**
   * Achieved in section [Calculating the total energy of the system](#Calculating-the-total-energy-of-the-system)
+* **Find exact critical temperature of the 2D square lattice Ising Model**
+  * Achieved in section [Critical Temperature](#Critical-Temperature)
 * **Obtain evolution of Ising model under the Metropolis algorithm**
   * Achieved in section [Results of the Metropolis(2D) Ising model simulation](#Results-of-the-Metropolis(2D)-Ising-model-simulation)
+* **Obtain the magnetisation with respect to $`T/T_c`$**
+  * Achieved in section [Absolute of average magnetisation |⟨M⟩|](#Absolute-of-average-magnetisation-|⟨M⟩|)
 
 ### Introduction to the Metropolis Algorithm
 
@@ -90,18 +94,41 @@ Then, the **total energy** is just the sum of every element in the 2D array as i
 
 This was implemented in the function `flip_a_spin(spins)`. To choose a random spin, we use `numpy.random.randint()` to randomly index a spin on the lattice. Then, to flip the sign of the spin, we used `numpy.negative`.
 
+### Critical Temperature
+
+From this [reference](https://cpb-us-w2.wpmucdn.com/u.osu.edu/dist/3/67057/files/2018/09/Ising_model_MFT-25b1klj.pdf), we note that the **exact critical temperature for 2D square lattice Ising model** is given as:
+
+$`T_c=\frac{2.27J}{k_B}`$
+
+where $`k_B`$ is the Boltzmann factor.
+
 ### Results of the Metropolis(2D) Ising model simulation
 
 The `.gif`'s in this section is obtain by running `generate_Ising_gif.py`. Note the dependency on `imageio` as you might be lacking this library. The `imageio` library is used in conjunction with `os` and `matplotlib.pyplot` to obtain plots and convert them into an animated `gif`.
 
 #### Ising Model evolution with external magnetic field, h=0
 
+In this section we see the Ising model evolution for $`T<T_c`$ (left) and $`T>T_c`$ (right) while we fix the external magnetic field $`h=0`$. As we can see below, for $`T<T_c`$, the lattice stablises into big chunks of homogeneous islands while for $`T>T_c`$, the system does not stabilise and continues to be rather chaotic. This behaviour is expected and is indicative that our code is working as intended.
+
 <img src="simulation_images/Metropolis_J2_TTc0.01_h0.gif" width="256" height="256" />
 <img src="simulation_images/Metropolis_J2_TTc1.5_h0.gif" width="256" height="256" /><br />
 
 #### Ising Model evolution with external magnetic field, h=10
 
+In the previous section we saw the Ising model evolution for $`T>T_c`$ with $`h=0`$ stayed chaotic. Now, we still use the same $`T`$ while turning on the external magnetic field and set $`h=20`$. As we can see below, eventhough we are in the $`T>T_c`$ regime, the the system stabilised in fully positive spins. This behaviour is expected because the presence of external magnetic field destroys symmetry.
+
 <img src="simulation_images/Metropolis_J2_TTc1.5_h20.gif" width="256" height="256" />
+
+### Observables
+
+#### Absolute of average magnetisation |⟨M⟩|
+
+The figure in this section is obtained by running `generate_Ising_magnetisation`.
+
+We ran in total 10 sets of Metropolis simulations each of 100000 runs and the lattice consists of $`64\times64`$ and $`h=0`$. The evaluation of magnetisation is done with this line: `M[i] = np.abs(np.mean(final_spins))` within `generate_Ising_magnetisation.py`.
+From the figure below, we see that in fact the average magnetisation falls somewhat sharply to 0 at $`\frac{T}{T_c}\approx1`$, which is again an expected behaviour and is indicative that our code is working correctly.
+
+![Magnetisation](simulation_images/Absolute_magnetisation_h0.png)  
 
 ## Week 2
 (due before 28 April)
