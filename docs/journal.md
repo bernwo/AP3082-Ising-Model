@@ -128,6 +128,8 @@ The figure in this section is obtained by running `generate_Ising_magnetisation`
 We ran in total 10 sets of Metropolis simulations each of 100000 runs and the lattice consists of $`64\times64`$ and $`h=0`$. The evaluation of magnetisation is done with this line: `M[i] = np.abs(np.mean(final_spins))` within `generate_Ising_magnetisation.py`.
 From the figure below, we see that in fact the average magnetisation falls somewhat sharply to 0 at $`\frac{T}{T_c}\approx1`$, which is again an expected behaviour and is indicative that our code is working correctly.
 
+The fluctuations are expected and the magnetisation not falling to 0 at exactly $`\frac{T}{T_c}=1`$ can be attributed to the insufficient size of the lattice.
+
 <img src="simulation_images/Absolute_magnetisation_h0.png" width="256" height="256" /><br />
 
 ## Week 2
