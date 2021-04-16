@@ -49,7 +49,7 @@ We note that in the first week, there is not much structure in the repository ye
 * **Find exact critical temperature of the 2D square lattice Ising Model**
   * Achieved in section [Critical Temperature](#critical-temperature)
 * **Obtain evolution of Ising model under the Metropolis algorithm**
-  * Achieved in section [Results of the Metropolis(2D) Ising model simulation](#results-of-the-metropolis2D-ising-model-simulation)
+  * Achieved in section [Results of the Metropolis(2D) Ising model simulation](#results-of-the-metropolis2d-ising-model-simulation)
 * **Obtain the magnetisation with respect to ($`T/T_c`$)**
   * Achieved in section [Absolute of average magnetisation |⟨M⟩|](#absolute-of-average-magnetisation-m)
 
