@@ -70,7 +70,11 @@ The equation to calculate $`E_{tot}`$ is given by:
 
 $`E_{tot}=\sum^{N\times N}_{i=1}E_i`$
 
-where $`E_{i}`$ is the **energy of an individual spin** $`E_{i}=-\frac{J}{2}\sum_{j=±1}s_is_j`$.
+where $`E_{i}`$ is the **energy of an individual spin** $`E_{i}=-\frac{J}{2}\sum_{j=i±1}s_is_j`$. To clarify, $`\sum_{j=i±1}`$ means the sum over the nearest neighbours of spin indexed $`i`$.
+
+The calculation of **energy of an individual spin** is achieved using the function `get_energy_singlespin(J,h,neighbour_sums,spins)` within the file `Metropolis_functions.py`.
+
+
 
 ### Results of the Metropolis(2D) Ising model simulation
 
