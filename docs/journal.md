@@ -45,20 +45,20 @@ We note that in the first week, there is not much structure in the repository ye
 * **Finding out about Metropolis Algorithm**
   * Achieved in section [Introduction to the Metropolis Algorithm](#introduction-to-the-metropolis-algorithm)
 * **Find out how to calculate the total energy and energy of individual spin**
-  * Achieved in section [Calculating the total energy of the system](#Calculating-the-total-energy-of-the-system)
+  * Achieved in section [Calculating the total energy of the system](#calculating-the-total-energy-of-the-system)
 * **Find exact critical temperature of the 2D square lattice Ising Model**
-  * Achieved in section [Critical Temperature](#Critical-Temperature)
+  * Achieved in section [Critical Temperature](#critical-temperature)
 * **Obtain evolution of Ising model under the Metropolis algorithm**
-  * Achieved in section [Results of the Metropolis(2D) Ising model simulation](#Results-of-the-Metropolis(2D)-Ising-model-simulation)
-* **Obtain the magnetisation with respect to $`T/T_c`$**
-  * Achieved in section [Absolute of average magnetisation |⟨M⟩|](#Absolute-of-average-magnetisation-|⟨M⟩|)
+  * Achieved in section [Results of the Metropolis(2D) Ising model simulation](#results-of-the-metropolis2D-ising-model-simulation)
+* **Obtain the magnetisation with respect to ($`T/T_c`$)**
+  * Achieved in section [Absolute of average magnetisation |⟨M⟩|](#absolute-of-average-magnetisation-m)
 
 ### Introduction to the Metropolis Algorithm
 
 The pseudo code to each step in the [Metropolis algorithm](https://www.asc.ohio-state.edu/braaten.1/statphys/Ising_MatLab.pdf) can be written as:
 
 * Calculate E<sub>current</sub>.
-* Choose a [random spin to flip its sign](#Flipping-a-random-single-spin).
+* Choose a [random spin to flip its sign](#flipping-a-random-single-spin).
 * Calculate E<sub>trial</sub>.
 * Calculate ΔE=E<sub>current</sub>-E<sub>trial</sub>.
 * If ΔE ≤ 0
