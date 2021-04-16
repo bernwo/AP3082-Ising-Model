@@ -130,7 +130,7 @@ From the figure below, we see that in fact the average magnetisation falls somew
 
 The fluctuations are expected and the magnetisation not falling to 0 at exactly $`\frac{T}{T_c}=1`$ can be attributed to the insufficient size of the lattice.
 
-<img src="simulation_images/Absolute_magnetisation_h0.png" width="256" height="256" /><br />
+<img src="simulation_images/Absolute_magnetisation_h0.png" width="460" height="300" /><br />
 
 ## Week 2
 
