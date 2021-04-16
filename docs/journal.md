@@ -71,8 +71,9 @@ The equation to calculate $`E_{tot}`$ is given by:
 $`E_{tot}=\sum^{N\times N}_{i=1}E_i`$
 
 where $`E_{i}`$ is the **energy of an individual spin** $`E_{i}=-\frac{J}{2}\sum_{j=i±1}s_is_j`$. To clarify, $`\sum_{j=i±1}`$ means the sum over the nearest neighbours of spin indexed $`i`$.
+This expression was obtained from [here](http://star-www.dur.ac.uk/~tt/MSc/Lecture8.pdf).
 
-The calculation of **energy of an individual spin** is achieved using the function `get_energy_singlespin(J,h,neighbour_sums,spins)` within the file `Metropolis_functions.py`.
+The calculation of **energy of an individual spin** is achieved using the function `get_energy_singlespin(J,h,neighbour_sums,spins)` within the file `Metropolis_functions.py`. To calculate the sum of the neighbours of each of the spins, we utilised `scipy.ndimage.convolve` which allows us to easily calculate the sum of each of the spins over the entire lattice with a mere few lines of code. In the `convolve` function, we specified `mode='wrap'` to indicate that we enforce a [periodic boundary condition](https://en.wikipedia.org/wiki/Periodic_boundary_conditions).
 
 
 
