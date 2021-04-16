@@ -46,6 +46,7 @@ We note that in the first week, there is not much structure in the repository ye
   * Achieved in section [Introduction to the Metropolis Algorithm](#introduction-to-the-metropolis-algorithm)
 * **Find out how to calculate the total energy and energy of individual spin**
   * Achieved in section [Calculating the total energy of the system](#calculating-the-total-energy-of-the-system)
+  * In this section we also talked about how we achieved periodic boundary condition.
 * **Find exact critical temperature of the 2D square lattice Ising Model**
   * Achieved in section [Critical Temperature](#critical-temperature)
 * **Obtain evolution of Ising model under the Metropolis algorithm**
@@ -81,12 +82,12 @@ Let us denote $`E_{tot}`$ as the **total energy** for clarity.
 
 The equation to calculate $`E_{tot}`$ is given by:
 
-$`E_{tot}=\sum^{N\times N}_{i=1}E_i`$
+$`E_{tot}=\sum^{L\times L}_{i=1}E_i`$
 
 where $`E_{i}`$ is the **energy of an individual spin** $`E_{i}=-\frac{J}{2}\sum_{j=i±1}s_is_j`$. To clarify, $`\sum_{j=i±1}`$ means the sum over the nearest neighbours of spin indexed $`i`$.
 This expression was obtained from [here](http://star-www.dur.ac.uk/~tt/MSc/Lecture8.pdf).
 
-The calculation of **energy of an individual spin** is achieved using the function `get_energy_singlespin(J,h,neighbour_sums,spins)` within the file `Metropolis_functions.py` which yields a 2D array. To calculate the sum of the neighbours of each of the spins, we utilised `scipy.ndimage.convolve` which allows us to efficiently calculate the sum of each of the spins over the entire lattice with a mere few lines of code. In the `convolve` function, we specified `mode='wrap'` to indicate that we enforce a [periodic boundary condition](https://en.wikipedia.org/wiki/Periodic_boundary_conditions).
+The calculation of **energy of an individual spin** is achieved using the function `get_energy_singlespin(J,h,neighbour_sums,spins)` within the file `Metropolis_functions.py` which yields a 2D array. To calculate the sum of the neighbours of each of the spins, we utilised `scipy.ndimage.convolve` which allows us to efficiently calculate the sum of each of the spins over the entire lattice with a mere few lines of code. In the `scipy.ndimage.convolve` function, we specified **`mode='wrap'` to indicate that we enforce a [periodic boundary condition](https://en.wikipedia.org/wiki/Periodic_boundary_conditions)**.
 
 Then, the **total energy** is just the sum of every element in the 2D array as implemented in the function `get_energy_total(E)`.
 
