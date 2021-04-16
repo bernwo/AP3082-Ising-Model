@@ -55,6 +55,14 @@ Note that the *E* here refers to the *total energy* of the system.
 
 ### Calculating the total energy of the system
 
+Let us denote $`E_{tot}`$ as the total energy for clarity.
+
+The equation to calculate $`E_{tot}`$ is given by:
+
+$`E_{tot}=\sum^{N\times N}_{i=1}E_i`$
+
+where $`E_{i}`$ is the energy of an individual spin $`E_{i}=-\frac{J}{2}\sum_{j=±1}s_is_j`$.
+
 ### Results of the Metropolis(2D) Ising model simulation
 
 #### Ising Model evolution with external magnetic field, h=0
