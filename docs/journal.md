@@ -55,7 +55,7 @@ We note that in the first week, there is not much structure in the repository ye
 
 ### Introduction to the Metropolis Algorithm
 
-The pseudo code to each run of the [Metropolis algorithm](https://www.asc.ohio-state.edu/braaten.1/statphys/Ising_MatLab.pdf) can be written as:
+The pseudo code to each step in the [Metropolis algorithm](https://www.asc.ohio-state.edu/braaten.1/statphys/Ising_MatLab.pdf) can be written as:
 
 * Calculate E<sub>current</sub>.
 * Choose a [random spin to flip its sign](#Flipping-a-random-single-spin).
@@ -65,7 +65,7 @@ The pseudo code to each run of the [Metropolis algorithm](https://www.asc.ohio-s
   * set E<sub>current</sub>=E<sub>trial</sub>
 * Else
   * Choose random number *r* ∈ [0,1].
-  * Compute W=exp(-βΔE)
+  * Compute W=exp(-βΔE) where β=1/(k<sub>B</sub>T)
   * If r < W
     * set E<sub>current</sub>=E<sub>trial</sub>
   * Else
