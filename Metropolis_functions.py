@@ -152,12 +152,12 @@ def Metropolis2D(N,spins,J,T,h,creategif=False,plot_interval=100):
     used_intervalSavePic = []
     for i in range(N):
         neighbour_sums = convolve(spins, kernel, mode='wrap')
-
         E = get_energy_singlespin(J,h,neighbour_sums,spins)
         E_tot = get_energy_total(E)
 
         spins_trial = flip_a_spin(spins)
-        E_trial = get_energy_singlespin(J,h,neighbour_sums,spins_trial)
+        neighbour_sums_trial = convolve(spins, kernel, mode='wrap')
+        E_trial = get_energy_singlespin(J,h,neighbour_sums_trial,spins_trial)
         E_trial_tot = get_energy_total(E_trial)
 
         dE = E_trial_tot - E_tot
