@@ -108,7 +108,7 @@ def flip_a_spin(spins):
     
     Return:
     --------
-    new_spins: float
+    new_spins: numpy.ndarray
         The lattice containing spins with a randomly flipped spin.
     """ 
     Lx = spins.shape[0]
@@ -142,7 +142,7 @@ def Metropolis2D(N,spins,J,T,h,creategif=False,plot_interval=100):
 
     Return:
     --------
-    final_spins: float
+    final_spins: numpy.ndarray
         The resulting lattice after executing the Metropolis algorithm after N steps.
     """
     # begin Metropolis algorithm
