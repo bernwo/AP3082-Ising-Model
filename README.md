@@ -21,6 +21,10 @@ sudo pip3 install imageio
 
 The journal documentating the progress of this project can be found [here](docs/journal.md).
 
+### Milestones
+
+* [Week 1](https://gitlab.kwant-project.org/computational_physics/projects/Project-2---Ising_juandaanieel_kwo/-/issues/1)
+
 ## Simulations showcase
 
 The resulting works here can also be found in the [journal](docs/journal.md) with more in depth explanation.
