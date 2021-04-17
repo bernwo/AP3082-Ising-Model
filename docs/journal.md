@@ -136,12 +136,12 @@ Similarly for $`h=-20`$:
 
 The figure in this section is obtained by running `generate_Ising_magnetisation`.
 
-We ran in total 10 sets of Metropolis simulations each of 100000 runs and the lattice consists of $`64\times64`$ and $`h=0`$. The evaluation of magnetisation is done with this line: `M[i] = np.abs(np.mean(final_spins))` within `generate_Ising_magnetisation.py`. Each of the set we begin with a lattice with fully positive spins using the function `init_pos_lattice(L)`.
+We ran in total 20 sets of Metropolis simulations each of 200000 runs and the lattice consists of $`64\times64`$ and $`h=0`$. The evaluation of magnetisation is done with this line: `M[i] = np.abs(np.mean(final_spins))` within `generate_Ising_magnetisation.py`. Each of the set we begin with a lattice with fully positive spins using the function `init_pos_lattice(L)`.
 From the figure below, we see that in fact the average magnetisation falls somewhat sharply to 0 at $`\frac{T}{T_c}\approx1`$, which is again an expected behaviour and is indicative that our code is working correctly.
 
-The fluctuations are expected and the magnetisation not falling to 0 at exactly $`\frac{T}{T_c}=1`$ can be attributed to the insufficient size of the lattice.
+The fluctuations are expected and the magnetisation not falling to 0 at exactly $`\frac{T}{T_c}=1`$ may be attributed to the inherent numerical inccuracy of the Metropolis algorithm.
 
-<img src="simulation_images/Absolute_magnetisation_h0.png" width="460" height="300" /><br />
+<img src="simulation_images/Absolute_magnetisation_h0.png" width="450" height="290" /><br />
 
 ### Detailed Balance
 
