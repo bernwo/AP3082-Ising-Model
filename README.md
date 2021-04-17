@@ -5,6 +5,18 @@
 * [juandaanieel](https://gitlab.kwant-project.org/juandaanieel)  
 * [kwo](https://gitlab.kwant-project.org/kwo)  
 
+## Programming language
+
+**Python** is used in this project.
+
+## Dependencies
+
+This project depends on the library `imageio`. You may need to run the following line to install the dependency.
+
+```bash
+sudo pip3 install imageio
+```
+
 ## Journal
 
 The journal documentating the progress of this project can be found [here](docs/journal.md).
