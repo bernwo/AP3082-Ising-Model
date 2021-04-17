@@ -11,7 +11,7 @@ Tc = 2.27 * J/kB # critical temperature for 2D square lattice Ising model
 T = T_factor * Tc
 L = 40 # number of sites along a direction
 h = 0 # external magnetic field
-spins = init_pos_lattice(L) # Begin from a totally positive spin lattice.
+spins = init_rand_lattice(L) # Begin from a uniformly random spin lattice.
 
 # Begin 1 set of Metropolis2D simulation with N runs.
 final_spins = Metropolis2D(N,spins,J,T,h,creategif=False,plot_interval=5000)
