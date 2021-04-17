@@ -54,6 +54,7 @@ We note that in the first week, there is not much structure in the repository ye
 * **Obtain the magnetisation with respect to ($`T/T_c`$)**
   * Achieved in section [Absolute of average magnetisation |⟨M⟩|](#absolute-of-average-magnetisation-m)
 * **Check if our implementation fulfills the *'detailed balanced'***
+  * Achieved in section [Detailed Balance](#detailed-balance)
 
 ### Introduction to the Metropolis Algorithm
 
