@@ -53,6 +53,7 @@ We note that in the first week, there is not much structure in the repository ye
   * Achieved in section [Results of the Metropolis(2D) Ising model simulation](#results-of-the-metropolis2d-ising-model-simulation)
 * **Obtain the magnetisation with respect to ($`T/T_c`$)**
   * Achieved in section [Absolute of average magnetisation |⟨M⟩|](#absolute-of-average-magnetisation-m)
+* **Check if our implementation fulfills the *'detailed balanced'***
 
 ### Introduction to the Metropolis Algorithm
 
@@ -61,13 +62,13 @@ The **pseudo code** to each step in the [Metropolis algorithm](https://www.asc.o
 -----
 
 * **Calculate $`E_\mathrm{current}`$.**
-* **Choose a [random spin to flip its sign](#flipping-a-random-single-spin).**
+* **Choose a [random spin to flip its sign](#flipping-a-random-single-spin) with uniform distribution.**
 * **Calculate $`E_\mathrm{trial}`$.**
 * **Calculate $`\Delta E=E_\mathrm{current}-E_\mathrm{trial}`$.**
 * **If $`\Delta E\leq0`$,**
   * **set $`E_\mathrm{current}=E_\mathrm{trial}`$.**
 * **Else,**
-  * **Choose random number $`r\in[0,1]`$.**
+  * **Choose random number $`r\in[0,1]`$ with uniform distribution.**
   * **Compute $`W=e^{-\beta\Delta E}`$ where $`\beta=\frac{1}{k_BT}`$.**
   * **If $`r<W`$,**
     * **set $`E_\mathrm{current}=E_\mathrm{trial}`$.**
@@ -140,6 +141,19 @@ From the figure below, we see that in fact the average magnetisation falls somew
 The fluctuations are expected and the magnetisation not falling to 0 at exactly $`\frac{T}{T_c}=1`$ can be attributed to the insufficient size of the lattice.
 
 <img src="simulation_images/Absolute_magnetisation_h0.png" width="460" height="300" /><br />
+
+### Detailed Balance
+
+The **detailed balance** criterion in the context of the Metropolis algorithm for the Ising model is as such: $`p(S_\mathrm{a}\rightarrow S_\mathrm{b})=p(S_\mathrm{b}\rightarrow S_\mathrm{a})`$ where
+
+* $`S_\mathrm{i}`$ is the lattice state.
+* $`p(S_\mathrm{a}\rightarrow S_\mathrm{b})`$ denotes the probability of [choosing the trial move](#flipping-a-random-single-spin) such that our trial state becomes $`S_\mathrm{b}`$ from $`S_\mathrm{a}`$.
+
+Our Metropolis algorithm **satisfies** the **detailed balance** criterion since there the probabilty of any spin on the lattice being flipped is equal (i.e. uniformly random) at every single step of the algorithm.
+
+Furthermore, the [reference pseudo code](#introduction-to-the-metropolis-algorithm) which we referenced to implement the algorithm follows the pattern of the [pseudo code derived from the detailed balance](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm).
+
+Thus, we can safely conclude that our Metropolis algorithm indeed satisfies the **detailed balance** criterion.
 
 ## Week 2
 
