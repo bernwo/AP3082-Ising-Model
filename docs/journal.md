@@ -120,7 +120,7 @@ In the previous section we saw the Ising model evolution for $`T>T_c`$ with $`h=
 
 <img src="simulation_images/Metropolis_J2_TTc1.5_h20.gif" width="256" height="256" />
 
-Similarly for $`h-20`$:
+Similarly for $`h=-20`$:
 
 <img src="simulation_images/Metropolis_J2_TTc1.5_h-20.gif" width="256" height="256" />
 
