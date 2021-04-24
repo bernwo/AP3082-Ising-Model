@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from Metropolis_functions import*
 
 # INITIALISATION.
-N = 1000000 # total number of runs in each Metropolis2D simulation
-n = 20 # total number of Metropolis2D simulations
+N = 200000 # total number of runs in each Metropolis2D simulation
+n = 100 # total number of Metropolis2D simulations
 min_T_factor = 0.001
 max_T_factor = 1.5
 T_factor = np.linspace(min_T_factor,max_T_factor,n) # for taking fractions of the critical temperature
