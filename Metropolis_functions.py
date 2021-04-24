@@ -119,7 +119,14 @@ def flip_a_spin(spins):
     new_spin[i,j] = np.negative(new_spin[i,j])
     return new_spin
 
-def Metropolis2D(N,spins,J,T,h,creategif=False,plot_interval=100):
+def get_energy_difference_with_trial_state(J,h,i,j,spins):
+    Lx = spins.shape[0]
+    Ly = spins.shape[1]
+    neighbour_sum = (spins[(i+1)%Lx,j]+spins[(i-1)%Lx,j]+spins[i,(j+1)%Ly]+spins[i,(j-1)%Ly])
+    dE = (-J * np.negative(spins[i,j])*neighbour_sum - h * np.negative(spins[i,j])) - (-J * spins[i,j]*neighbour_sum - h * spins[i,j])
+    return dE
+
+def Metropolis2D(N,spins,J,T,h,L,creategif=False,plot_interval=100):
     """
     Executes the Metropolis algorithm for the 2D Ising model.
 
@@ -148,27 +155,27 @@ def Metropolis2D(N,spins,J,T,h,creategif=False,plot_interval=100):
     # begin Metropolis algorithm
     print(f"Start Metropolis2D algorithm with {N} runs.")
     print(f"Temperature ratio, T/Tc = {np.round(T/(2.27 * J/kB),4)}")
-    kernel = np.array([[0, 1, 0],[1, 0, 1],[0, 1, 0]]) # specific for 2D
+    # kernel = np.array([[0, 1, 0],[1, 0, 1],[0, 1, 0]]) # specific for 2D
     used_intervalSavePic = []
     for i in range(N):
-        neighbour_sums = convolve(spins, kernel, mode='wrap')
-        E = get_energy_singlespin(J,h,neighbour_sums,spins)
-        E_tot = get_energy_total(E)
+        # neighbour_sums = convolve(spins, kernel, mode='wrap')
+        # E = get_energy_singlespin(J,h,neighbour_sums,spins)
+        # E_tot = get_energy_total(E)
 
-        spins_trial = flip_a_spin(spins)
-        neighbour_sums_trial = convolve(spins_trial, kernel, mode='wrap')
-        E_trial = get_energy_singlespin(J,h,neighbour_sums_trial,spins_trial)
-        E_trial_tot = get_energy_total(E_trial)
+        x_index = np.random.randint(low=0,high=L)
+        y_index = np.random.randint(low=0,high=L)
 
-        dE = E_trial_tot - E_tot
+        dE = get_energy_difference_with_trial_state(J,h,x_index,y_index,spins)
 
         if (dE <= 0):
-            spins = np.copy(spins_trial) # take new state
+            # spins = spins_trial # take new state
+            spins[x_index,y_index] = np.negative(spins[x_index,y_index]) # take new state
         else:
             r = np.random.rand()
             W = np.exp(-1/(kB*T)*dE)
             if (r < W):
-                spins = np.copy(spins_trial)  # take new state
+                # spins = spins_trial  # take new state
+                spins[x_index,y_index] = np.negative(spins[x_index,y_index]) # take new state
                 # end
         
         if (((i%plot_interval==0) or (i==N-1)) and creategif):
@@ -193,5 +200,5 @@ def Metropolis2D(N,spins,J,T,h,creategif=False,plot_interval=100):
                 os.remove(filename)
             print(f"Gif created.")
 
-    final_spins = np.copy(spins)
+    final_spins = spins
     return final_spins
