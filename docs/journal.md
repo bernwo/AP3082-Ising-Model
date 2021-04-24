@@ -160,6 +160,12 @@ Thus, we can safely conclude that our Metropolis algorithm indeed satisfies the 
 
 (due 2 May 2021, 23:59 (no lecture on King’s Day, 27 April))
 
+The magnetisation plot from last week (i.e. *week 1*) did not contain errorbars. 
+
+In this week, we implemented calculation of the magnetisation using the exact analytical expression, and compared the analytical result with the simulation result. From the comparison, we can plot the magnetisation with **errorbars**.
+
+<img src="simulation_images/Absolute_magnetisation_h0_errorbars.png" width="450" height="290" /><br />
+
 
 ## Week 3
 
