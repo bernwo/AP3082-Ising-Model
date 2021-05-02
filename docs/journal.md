@@ -168,7 +168,7 @@ In this week, we implemented calculation of the magnetisation using the exact an
 
 We implemented a different observable. The susceptibility is calculated as $`\chi=N\beta (<m^2>-<m>^2).`$ We calculated the errors with respect to the exact expression $`\chi=1/k_B(T-T_c)`$. However, we find that the disagreement between our results and the expected result is significant. In the next figure we show the susceptibility and the magnetization as a funciton of temperature. We can observe that the errors increase once the critical temperature is reached in both cases. While for the magnetization they became small after the transition to zero magnetization is reached, for the susceptibility they remain large. The main source of errors in our simulation is the algorithm used. As a next milestone, the implementation of the Wolff algorithm is required.
 
-<img src="simulation_images/mag_sus.png" width="450" height="290" /><br />
+<img src="simulation_images/mag_sus.png" width="650" height="290" /><br />
 
 ## Week 3
 
