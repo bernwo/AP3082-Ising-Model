@@ -176,13 +176,13 @@ We implemented a different observable. The susceptibility is calculated as $`\ch
 
 We have implemented the Wolff algorithm for the evolution of the spins. We have found that the errors are significantly smaller than for the Metropolis algorithm. By comparing these two algorithms we have found a trade-off in terms of performance and results. On one hand, the Metropolis algorithm is faster, but requires long relaxation times to extract valid results. On the other hand, the Wolff algorithm is slower for low temperatures, and fast for temperatures larger than the critical temperature. We think that this is due to the time that it takes to make big clusters when the system is in the ferromagnetic phase.
 
-Here we show two simulations. First, the Metropolis algorithm with 6000 relaxation steps in a lattice of 100 sites per side. 
+Here we show two simulations. First, the Metropolis algorithm with 6000 relaxation steps in a lattice of 100 sites per side.
 
-<img src="simulation_images/metropolis_journal.gif" width="800" height=400" /><br />
+<img src="simulation_images/metropolis_journal.gif" width="800" height="400" /><br />
 
 Second, the Wolff algorithm for the same system, but with 20 relaxation steps.
 
-<img src="simulation_images/wolff_journal.gif" width="800" height=400" /><br />
+<img src="simulation_images/wolff_journal.gif" width="800" height="400" /><br />
 
 The error is calculated with respect to the exact expression for the magnetization in an infinite system, and it is indicated by the red lines. We can clearly observe that for the Metropolis algorithm, the convergence towards the results take longer than for the Wolff case.
 
