@@ -178,11 +178,11 @@ We have implemented the Wolff algorithm for the evolution of the spins. We have 
 
 Here we show two simulations. First, the Metropolis algorithm with 6000 relaxation steps in a lattice of 100 sites per side. 
 
-<img src="simulation_images/metropolis_journal.gif" width="800" height=400" />
+<img src="simulation_images/metropolis_journal.gif" width="800" height=400" /><br />
 
 Second, the Wolff algorithm for the same system, but with 20 relaxation steps.
 
-<img src="simulation_images/wolff_journal.gif" width="800" height=400" />
+<img src="simulation_images/wolff_journal.gif" width="800" height=400" /><br />
 
 The error is calculated with respect to the exact expression for the magnetization in an infinite system, and it is indicated by the red lines. We can clearly observe that for the Metropolis algorithm, the convergence towards the results take longer than for the Wolff case.
 
