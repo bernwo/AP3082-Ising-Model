@@ -22,7 +22,7 @@ def save_frame(i,relax,spins,magnetization,T,h=0,J=1):
 
         plt.subplot(1,2,1)
         plt.imshow(spins,cmap='inferno',aspect="auto")
-        plt.title(f"Ising model (Wolff) Run #{i}.")
+        plt.title(f"Ising model (Metropolis) Run #{i}.")
         plt.subplot(1,2,2)
         plt.errorbar(magnetization[0],magnetization[1],color='b',ecolor='r',yerr=magnetization[2])
         plt.title(f"Magnetization.")
