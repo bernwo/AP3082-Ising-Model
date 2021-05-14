@@ -66,8 +66,6 @@ def init_neg_lattice(L):
     spins = -np.ones([L,L],dtype=int)
     return spins
 
-<<<<<<< HEAD
-=======
 def get_energy_total(J,h,spins):
     """
     Calculates the total spin energy contribution of the lattice.
@@ -92,7 +90,6 @@ def get_energy_total(J,h,spins):
     E_tot = np.sum(E)
     return E_tot
 
->>>>>>> 5dc5a3a85ad7df68a29c4e398926f02593099348
 def flip_a_spin(spins, turn):
     """
     Randomly flips a spin in the lattice.
