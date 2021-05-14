@@ -1,13 +1,16 @@
 import numpy as np
 from scipy.constants import Boltzmann as kB
-import matplotlib.pyplot as plt
 from scipy.ndimage import convolve
-import os
-import imageio # sudo pip3 install imageio
+
 
 def flip_coin():
     """
-    Generate random number between 0 and 1
+    Generates random number between 0 and 1.
+
+    Return:
+    --------
+    int
+        random number between 0 and 1.
     """
     return np.random.rand()
 
@@ -63,9 +66,9 @@ def init_neg_lattice(L):
     spins = -np.ones([L,L],dtype=int)
     return spins
 
-def get_energy_singlespin(J,h,neighbour_sums,spins):
+def get_energy_total(J,h,spins):
     """
-    Calculates the individual spin energy contribution of every spin in the lattice.
+    Calculates the total spin energy contribution of the lattice.
 
     Parameters:
     -----------
@@ -73,33 +76,17 @@ def get_energy_singlespin(J,h,neighbour_sums,spins):
         Coupling constant. J should always be J > 0.
     h: float
         External magnetic field strength.
-    neighbour_sums: numpy.ndarray
-        The sum of nearest-neighbours of each spin for every spins.
     spins: numpy.ndarray
         The lattice containing spins.
-
-    Return:
-    --------
-    E: numpy.ndarray
-        The individual spin energy contribution of every spin in the lattice.
-    """
-    E = -J/2 * neighbour_sums * spins - h * spins
-    return E
-
-def get_energy_total(E):
-    """
-    Calculates the total spin energy contribution of the lattice.
-
-    Parameters:
-    -----------
-    E: numpy.ndarray
-        The individual spin energy contribution of every spin in the lattice.
-
+    
     Return:
     --------
     E_tot: float
         The total spin energy contribution of the lattice.
     """
+    kernel = np.array([[0, 1, 0],[1, 0, 1],[0, 1, 0]])
+    neighbour_sums = convolve(spins, kernel, mode='wrap')
+    E = -J/2 * neighbour_sums * spins - h * spins
     E_tot = np.sum(E)
     return E_tot
 
