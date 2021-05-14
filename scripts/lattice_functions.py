@@ -1,13 +1,16 @@
 import numpy as np
 from scipy.constants import Boltzmann as kB
-import matplotlib.pyplot as plt
 from scipy.ndimage import convolve
-import os
-import imageio # sudo pip3 install imageio
+
 
 def flip_coin():
     """
-    Generate random number between 0 and 1
+    Generates random number between 0 and 1.
+
+    Return:
+    --------
+    int
+        random number between 0 and 1.
     """
     return np.random.rand()
 
@@ -63,6 +66,33 @@ def init_neg_lattice(L):
     spins = -np.ones([L,L],dtype=int)
     return spins
 
+<<<<<<< HEAD
+=======
+def get_energy_total(J,h,spins):
+    """
+    Calculates the total spin energy contribution of the lattice.
+
+    Parameters:
+    -----------
+    J: float
+        Coupling constant. J should always be J > 0.
+    h: float
+        External magnetic field strength.
+    spins: numpy.ndarray
+        The lattice containing spins.
+    
+    Return:
+    --------
+    E_tot: float
+        The total spin energy contribution of the lattice.
+    """
+    kernel = np.array([[0, 1, 0],[1, 0, 1],[0, 1, 0]])
+    neighbour_sums = convolve(spins, kernel, mode='wrap')
+    E = -J/2 * neighbour_sums * spins - h * spins
+    E_tot = np.sum(E)
+    return E_tot
+
+>>>>>>> 5dc5a3a85ad7df68a29c4e398926f02593099348
 def flip_a_spin(spins, turn):
     """
     Randomly flips a spin in the lattice.
