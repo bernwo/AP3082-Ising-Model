@@ -7,10 +7,10 @@ def get_error_mag(Temperature,J=1):
     return anal_M
 
 def get_magnetization(spins):
-    return np.abs(np.mean(spins))
+    return np.mean(spins)
 
 def get_magnetization_squared(spins):
-    return np.abs(np.mean(spins**2))
+    return np.mean(spins**2)
 
 def get_susceptibility(temp,spins):
     return (get_magnetization_squared(spins)-get_magnetization(spins)**2)*len(spins)/(temp)

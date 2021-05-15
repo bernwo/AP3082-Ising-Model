@@ -39,7 +39,7 @@ def get_observables(T,lat,obs):
 
 def evolution(f,relax,L,T_init,T_max,dT,h=0,J=1):
     
-    lat = lf.init_rand_lattice(L)
+    lat = lf.init_pos_lattice(L)
     i=0
     observables = []
     frames = []
