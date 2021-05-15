@@ -17,8 +17,7 @@ The temperature range we chose to benchmark is np.linspace(1.2,2.0,nT=20).
 Running this file yields the plot with the results and saves it in .pdf format.
 """
 
-import_module = '''import os
-os.chdir('/usr/local/etc/Python_Development/AP3082/Project-2---Ising_juandaanieel_kwo/scripts')
+import_module = '''
 import numpy as np
 from scipy.constants import Boltzmann as kB
 import matplotlib.pyplot as plt
@@ -27,7 +26,6 @@ from wolff import wolff_evolution
 from lattice_functions import init_rand_lattice, init_pos_lattice, init_neg_lattice
 import sys
 sys.setrecursionlimit(10000000)
-os.chdir('/usr/local/etc/Python_Development/AP3082/Project-2---Ising_juandaanieel_kwo')
 '''
 
 def testwolff(T):
