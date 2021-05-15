@@ -105,5 +105,5 @@ def evolution(f, relax, L, T_init, T_max, dT, h=0, J=1):
         i += 1
     # create_gif(i,relax)
     observables = np.transpose(np.array(observables))
-    obs_errors = np.transpose(np.array(obs_errors))
+    # obs_errors = np.transpose(np.array(obs_errors))
     return frames, observables, temps
