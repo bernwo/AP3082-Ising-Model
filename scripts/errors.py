@@ -118,4 +118,4 @@ def get_error_observable(observable):
     tau = get_tau(np.nan_to_num(get_autocorrelation_function(observable)))[0]
     N = len(observable)
     sigma = np.sqrt(2*tau/N)*np.sqrt(np.mean(observable**2)-np.mean(observable)**2)
-    return sigma
+    return sigma, tau

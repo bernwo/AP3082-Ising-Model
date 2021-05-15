@@ -2,7 +2,7 @@ import numpy as np
 from scipy.constants import Boltzmann as kB
 import lattice_functions as lf
 
-def wolff_evolution(lat,T,J=1):
+def wolff_evolution(lat,T,h,J=1):
     """
     Implementation of the Wolff algorithm for the evolution of the Ising model.
 

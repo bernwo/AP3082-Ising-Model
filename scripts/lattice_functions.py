@@ -1,7 +1,5 @@
 import numpy as np
 from scipy.constants import Boltzmann as kB
-from scipy.ndimage import convolve
-
 
 def flip_coin():
     """
@@ -65,30 +63,6 @@ def init_neg_lattice(L):
     """
     spins = -np.ones([L,L],dtype=int)
     return spins
-
-def get_energy_total(J,h,spins):
-    """
-    Calculates the total spin energy contribution of the lattice.
-
-    Parameters:
-    -----------
-    J: float
-        Coupling constant. J should always be J > 0.
-    h: float
-        External magnetic field strength.
-    spins: numpy.ndarray
-        The lattice containing spins.
-    
-    Return:
-    --------
-    E_tot: float
-        The total spin energy contribution of the lattice.
-    """
-    kernel = np.array([[0, 1, 0],[1, 0, 1],[0, 1, 0]])
-    neighbour_sums = convolve(spins, kernel, mode='wrap')
-    E = -J/2 * neighbour_sums * spins - h * spins
-    E_tot = np.sum(E)
-    return E_tot
 
 def flip_a_spin(spins, turn):
     """

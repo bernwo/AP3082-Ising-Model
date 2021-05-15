@@ -12,7 +12,7 @@ def get_energy_difference_with_trial_state(J,h,i,j,spins):
     dE = (-J * np.negative(spins[i,j])*neighbour_sum - h * np.negative(spins[i,j])) - (-J * spins[i,j]*neighbour_sum - h * spins[i,j])
     return dE
 
-def metropolis_evolution(spins,T,J=1,h=0):
+def metropolis_evolution(spins,T,h,J=1):
     """
     Executes the Metropolis algorithm for the 2D Ising model.
 
