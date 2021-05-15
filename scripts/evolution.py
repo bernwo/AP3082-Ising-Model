@@ -1,7 +1,8 @@
 import numpy as np
-from observables import get_magnetization, get_error_mag
+import observables as bs
 import matplotlib.pyplot as plt
 import lattice_functions as lf
+import errors as er
 from scipy.constants import Boltzmann as kB
 import imageio
 import os
@@ -31,25 +32,32 @@ def save_frame(i,relax,spins,magnetization,T,h=0,J=1):
         plt.savefig(f"../simulation_images/wolff_{i}.png", dpi=200)
 
         plt.close()
+        
+def get_observables(T,lat,obs):
+    obs = [bs.get_magnetization(lat),bs.get_specific_heat(T,lat),bs.get_susceptibility(T,lat)]
+    return obs
 
-def evolution(f,relax,L,T,dT,J=1,dJ=0):
-    lat = lf.init_pos_lattice(L)
+def evolution(f,relax,L,T_init,T_max,dT,h=0,J=1):
+    
+    lat = lf.init_rand_lattice(L)
     i=0
-    magnetization = [[],[],[]]
+    observables = []
     frames = []
+    temps = []
+    T = T_init
 
-    while T/2.27<2.5 and T>0:
-        lat = f(lat,T)
+    while T/2.27<T_max and T>0:
+        lat = f(lat,T,h)
         
         if i%relax==0:
-            M = get_magnetization(lat)
-            magnetization[0].append(T/2.27)
-            magnetization[1].append(M)
-            magnetization[2].append(M-get_error_mag(T))
-            T += dT
-            J += dJ
+            
+            observables.append(get_observables(T,lat,observables))
             frames.append(lat)
+            temps.append(T)
+            T += dT
+            
             #save_frame(i,relax,lat,magnetization,T)
         i += 1
     #create_gif(i,relax)
-    return frames, magnetization
+    observables = np.transpose(np.array(observables))
+    return frames, observables, temps
