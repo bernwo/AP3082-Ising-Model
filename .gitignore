@@ -8,6 +8,7 @@ __pycache__/
 
 # test
 test.py
+test_timeit.py
 
 # deafult pictures
 Absolute_magnetisation.png
