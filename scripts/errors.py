@@ -58,7 +58,7 @@ def get_autocorrelation_function(observable):
 
     return af[1:]
 
-def func(x,a,b,c):
+def func(x,b):
     """
     Function used to fit the decaying exponential of the autocorrelation func
 
@@ -78,7 +78,7 @@ def func(x,a,b,c):
     _: float
         function of exponential decay evaluated at x,a,b,c.
     """
-    return a*np.exp(-x/b)+c
+    return np.exp(-x/b)
 
 def get_tau(autocorrelation):
     """
@@ -94,11 +94,17 @@ def get_tau(autocorrelation):
     params: np.darray
         fitting parameters of autocorrelation onto an exponential decay
     """
-    N = len(autocorrelation)//4
+    N = len(autocorrelation)//2
     x = np.arange(N)
     y = np.nan_to_num(autocorrelation[:N])
-    params, errors = curve_fit(func,x, y)
+    try:
+        params, errors = curve_fit(func, x, y)
+    except:
+        params = [0]
     return params
+
+def bootstrap(data,tau):
+    
 
 def get_error_observable(observable):
     """
