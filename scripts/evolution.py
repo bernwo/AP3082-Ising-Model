@@ -3,7 +3,6 @@ import observables as bs
 import matplotlib.pyplot as plt
 import lattice_functions as lf
 import errors as er
-from scipy.constants import Boltzmann as kB
 import imageio
 import os
 
@@ -38,7 +37,7 @@ def get_observables(T, lat):
     """
     Calculate observables for a lattice configuration at a given temperature.
     """
-    obs = [bs.get_magnetization(lat), bs.get_specific_heat(T, lat), bs.get_susceptibility(T, lat)]
+    obs = [bs.get_magnetization(lat), bs.get_specific_heat(T,lat), bs.get_susceptibility(T,lat)]
     return obs
 
 
@@ -84,26 +83,26 @@ def evolution(f, relax, L, T_init, T_max, dT, h=0, J=1):
     lat = lf.init_pos_lattice(L)
     i = 0
     observables = []
-    #obs_errors = []
-    #obs_no_relax = []
     frames = []
     temps = []
     T = T_init
 
     while T/2.27 < T_max and T > 0:
         lat = f(lat, T, h)
-        #obs_no_relax.append(get_observables(T, lat))
+
         if i % relax == 0 and i != 0:
-            #obs_no_relax = np.transpose(np.array(obs_no_relax))
-            #obs_errors.append([er.get_error_observable(obs)[0] for obs in obs_no_relax])
             observables.append(get_observables(T, lat))
             frames.append(lat)
             temps.append(T)
             T += dT
-            #obs_no_relax = []
             # save_frame(i,relax,lat,magnetization,T)
         i += 1
     # create_gif(i,relax)
-    observables = np.transpose(np.array(observables))
-    obs_errors = np.transpose(np.array(obs_errors))
-    return frames, observables, temps
+
+    obs = np.transpose(np.array(observables))
+    # calculate correlation time for the magnetization
+    tau, tau_error = er.get_error_obs(obs[0],T_init, T_max, dT)[3:]
+    # use magnetization correlation time for all observables
+    blocked_data = [er.get_error_obs(m, T_init, T_max, dT, tau=tau, tau_error=tau_error) for m in obs]
+
+    return frames, blocked_data

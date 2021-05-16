@@ -94,19 +94,33 @@ def get_tau(autocorrelation):
     params: np.darray
         fitting parameters of autocorrelation onto an exponential decay
     """
-    N = len(autocorrelation)//2
+    N = len(autocorrelation)
     x = np.arange(N)
     y = np.nan_to_num(autocorrelation[:N])
     try:
         params, errors = curve_fit(func, x, y)
     except:
-        params = [0]
-    return params
+        params, errors = 0, 0
+    perr = np.sqrt(np.diag(errors))
+    return params, perr
 
-def bootstrap(data,tau):
-    
+def split_padded(a,n):
+    """
+    Taken from: https://stackoverflow.com/questions/9922395/python-numpy-split-array-into-unequal-subarrays
+    """
+    padding = (-len(a))%n
+    return np.split(np.concatenate((a,np.zeros(padding))),n)
 
-def get_error_observable(observable):
+def blocked_data(m):
+    """
+    """
+    sigma, tau = get_error_observable(m)
+    blocked_m = split_padded(m,int(tau))
+    error_m = np.std(np.array(blocked_m),axis=1)
+    blocked_m = np.mean(blocked_m,axis=1)
+    return blocked_m, error_m, tau
+
+def get_error_observable(observable,size=10):
     """
     Use tau to calculate statistical error of a data series
 
@@ -120,8 +134,30 @@ def get_error_observable(observable):
     sigma: float
         error associated to a given observable
     """
-    observable=np.nan_to_num(observable)
-    tau = get_tau(np.nan_to_num(get_autocorrelation_function(observable)))[0]
+    af = get_autocorrelation_function(observable)
+    # len(af)//16 is a guess for the non-trivial data range
+    tau = get_tau(af[:size])[0]
     N = len(observable)
     sigma = np.sqrt(2*tau/N)*np.sqrt(np.mean(observable**2)-np.mean(observable)**2)
     return sigma, tau
+
+def get_error_obs(obs,T_i,T_f,dT,size=10,tau=None,tau_error=None):
+    
+    if tau == None:
+        tau, tau_error = get_tau(get_autocorrelation_function(obs)[:size])
+        tau = int(np.round(tau))
+
+    if tau > 1 and tau < len(obs):
+        blocked_m = split_padded(obs,tau)
+        error_m = np.std(np.array(blocked_m),axis=1)
+        blocked_m = np.mean(blocked_m,axis=1)
+
+    else:
+        blocked_m = obs
+        error_m = 0
+        tau = 1
+
+    len_data = len(blocked_m)
+    temps_m = np.linspace(T_i, T_f*2.27, num=len_data)
+
+    return temps_m, blocked_m, error_m, tau, tau_error
