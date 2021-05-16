@@ -10,7 +10,7 @@ def get_magnetization(spins,power=1):
     return np.mean(spins**power)
 
 def get_susceptibility(temp,spins):
-    return (abs(get_magnetization(spins,power=2))-abs(get_magnetization(spins))**2)*len(spins)/(temp)
+    return (np.mean(spins**2)-np.mean(spins)**2)*len(spins)**2/(temp)
 
 def get_error_sus(T,J):
     Tc=2.27 
