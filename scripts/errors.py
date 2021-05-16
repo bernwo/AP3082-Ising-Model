@@ -5,14 +5,14 @@ def autocorrelation_function(observable, time):
     """
     Parameters:
     -----------
-    observable: np.ndarray
-        data of an observable w.r.t. time
-    time: float
-        time at which autocorrelation function is computed
+        observable: np.ndarray
+            data of an observable w.r.t. time
+        time: float
+            time at which autocorrelation function is computed
 
     Return:
-    autocorrelation: float
-        autocorrelation function at a given time
+        autocorrelation: float
+            autocorrelation function at a given time
     --------
     """
     #Number of time steps
@@ -43,12 +43,12 @@ def get_autocorrelation_function(observable):
     """
     Parameters:
     -----------
-    observable: np.ndarray
-        data of an observable w.r.t. time
+        observable: np.ndarray
+            data of an observable w.r.t. time
 
     Return:
-    af: np.darray
-        autocorrelation function of an observable over all time
+        af: np.darray
+            autocorrelation function of an observable over all time
     --------
     """
     number_steps = len(observable)-1
@@ -64,19 +64,19 @@ def func(x,b):
 
     Parameters:
     -----------
-    x: float
+        x: float
 
-    a: float
-        magnitude
-    b: float
-        characteristic distance
-    c: float
-        shift from zero
+        a: float
+            magnitude
+        b: float
+            characteristic distance
+        c: float
+            shift from zero
 
     Return:
     --------
-    _: float
-        function of exponential decay evaluated at x,a,b,c.
+        _: float
+            function of exponential decay evaluated at x,a,b,c.
     """
     return np.exp(-x/b)
 
@@ -86,13 +86,13 @@ def get_tau(autocorrelation):
 
     Parameters:
     -----------
-    autocorrelation: np.darray
-        autocorrelation function of a given observable
+        autocorrelation: np.darray
+            autocorrelation function of a given observable
 
     Return:
     -------
-    params: np.darray
-        fitting parameters of autocorrelation onto an exponential decay
+        params: np.darray
+            fitting parameters of autocorrelation onto an exponential decay
     """
     N = len(autocorrelation)
     x = np.arange(N)
@@ -111,38 +111,42 @@ def split_padded(a,n):
     padding = (-len(a))%n
     return np.split(np.concatenate((a,np.zeros(padding))),n)
 
-def blocked_data(m):
-    """
-    """
-    sigma, tau = get_error_observable(m)
-    blocked_m = split_padded(m,int(tau))
-    error_m = np.std(np.array(blocked_m),axis=1)
-    blocked_m = np.mean(blocked_m,axis=1)
-    return blocked_m, error_m, tau
 
-def get_error_observable(observable,size=10):
+def get_error_obs(obs,T_i,T_f,dT,size=10,tau=None,tau_error=None):
     """
-    Use tau to calculate statistical error of a data series
+    Use tau to calculate statistical error of a data series using the block data method.
+    Receives the full observable and retrieves an equal (tau=1) or shorter list where 
+    data was separated into uncorrelated blocks based on the autocorrelation function.
 
     Parameters:
     -----------
-    observable: np.ndarray
-        data of an observable w.r.t. time
-
+        obs: np.ndarray
+            data of an observable w.r.t. time
+        T_i: float
+            Initial temperature
+        T_f: float
+            Final temperature taken in units of T_c
+        dT: float
+            Temperature step
+        size: int
+            Size of the lattice
+        tau: float
+            Correlation time. If not specified it is calculated for the data set
+        tau_error: float
+            Error of the correlation time. Calculated if not specified
     Return:
     --------
-    sigma: float
-        error associated to a given observable
+        temps_m: nd.array
+            Temperatures for blocked data
+        blocked_m: nd.array
+            Uncorrelated version of the given observable
+        error_m: nd.array
+            Error calculated for each block of data
+        tau: float
+            Correlation time
+        tau_error: float
+            Error associated to the correlation time
     """
-    af = get_autocorrelation_function(observable)
-    # len(af)//16 is a guess for the non-trivial data range
-    tau = get_tau(af[:size])[0]
-    N = len(observable)
-    sigma = np.sqrt(2*tau/N)*np.sqrt(np.mean(observable**2)-np.mean(observable)**2)
-    return sigma, tau
-
-def get_error_obs(obs,T_i,T_f,dT,size=10,tau=None,tau_error=None):
-    
     if tau == None:
         tau, tau_error = get_tau(get_autocorrelation_function(obs)[:size])
         tau = int(np.round(tau))

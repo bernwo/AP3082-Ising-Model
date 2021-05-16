@@ -27,7 +27,21 @@ def wolff_evolution(lat,T,h,J=1):
     flip_cluster(lat,cluster)
     return lat
 
-def make_cluster(lat,cluster,threeshold,random_spin):
+def make_cluster(lat,cluster,random_spin,threeshold):
+    """
+    Make a cluster of spins by calling the function check_neighbors
+
+    Parameters:
+    -----------
+        np.darray: lat
+            Initial configuration of spins lattice
+        np.darray: cluster
+
+        tuple: spin
+
+        float: threeshold
+
+    """
     cluster=check_neighbours(lat,cluster,random_spin,threeshold)
     return cluster
 

@@ -6,6 +6,27 @@ import os
 import imageio # sudo pip3 install imageio
 
 def get_energy_difference_with_trial_state(J,h,i,j,spins):
+    """
+    Computes the energy difference of a spin configuration with one spin flipped
+    versus the configuration given in spins.
+    
+    Parameters:
+    -----------
+        J: float
+            Coupling constant
+        h: float
+            Magnetic field
+        i: int
+            spin index
+        j: int
+            spin index
+        spins: nd.array
+            Spin configurations
+    Returns:
+    --------
+        dE: float
+            Energy difference with trial state
+    """
     Lx = spins.shape[0]
     Ly = spins.shape[1]
     neighbour_sum = (spins[(i+1)%Lx,j]+spins[(i-1)%Lx,j]+spins[i,(j+1)%Ly]+spins[i,(j-1)%Ly])
@@ -18,22 +39,22 @@ def metropolis_evolution(spins,T,h,J=1):
 
     Parameters:
     -----------
-    N: int
-        Total number of steps in the Metropolis algorithm to run.
-    spins: numpy.ndarray
-        The lattice containing spins.
-    J: float
-        Coupling constant. J should always be J > 0.
-    T: float
-        Temperature of the system.
-    h: float
-        External magnetic field strength.
-    dT: float
-        Change in temperature in each step of simulation
+        N: int
+            Total number of steps in the Metropolis algorithm to run.
+        spins: numpy.ndarray
+            The lattice containing spins.
+        J: float
+            Coupling constant. J should always be J > 0.
+        T: float
+            Temperature of the system.
+        h: float
+            External magnetic field strength.
+        dT: float
+            Change in temperature in each step of simulation
     Return:
     --------
-    final_spins: numpy.ndarray
-        The resulting lattice after executing the Metropolis algorithm after N steps.
+        final_spins: numpy.ndarray
+            The resulting lattice after executing the Metropolis algorithm after N steps.
     """
     # begin Metropolis algorithm
     #print(f"Start Metropolis2D algorithm.")

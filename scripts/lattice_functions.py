@@ -85,24 +85,3 @@ def flip_a_spin(spins, turn):
     j = np.random.randint(low=0,high=Ly)
     new_spin[i,j] = turn*new_spin[i,j]
     return new_spin
-
-def get_energy_difference_with_trial_state(J,h,i,j,spins):
-    Lx = spins.shape[0]
-    Ly = spins.shape[1]
-    neighbour_sum = (spins[(i+1)%Lx,j]+spins[(i-1)%Lx,j]+spins[i,(j+1)%Ly]+spins[i,(j-1)%Ly])
-    dE = (-J * np.negative(spins[i,j])*neighbour_sum - h * np.negative(spins[i,j])) - (-J * spins[i,j]*neighbour_sum - h * spins[i,j])
-    return dE
-
-def get_magnetization(spins):
-    return np.abs(np.mean(spins))
-
-def get_magnetization_squared(spins):
-    return np.abs(np.mean(spins**2))
-
-def get_susceptibility(temp,spins):
-    return (get_magnetization_squared(spins)-get_magnetization(spins)**2)*len(spins)/(kB*temp)
-
-def get_error_sus(T,J):
-    Tc=2.27 * J/kB
-    error = np.nan_to_num(1/(kB*(T-Tc)))
-    return error

@@ -7,6 +7,15 @@ import imageio
 import os
 
 def create_gif(n_frames,relax):
+    """
+    Save a gif animation
+    Parameters:
+    -----------
+        n_frames: int
+            number of frames in the animation
+        relax: int
+            relaxation time between frames
+    """
     with imageio.get_writer("../simulation_images/Metropolis.gif", mode='I') as writer:
         print(f"Creating gif and clearing the temporary images...")
         for i in range(0,n_frames,relax):
@@ -17,7 +26,9 @@ def create_gif(n_frames,relax):
         print(f"Gif created.")
 
 def save_frame(i,relax,spins,magnetization,T,h=0,J=1):
-
+        """
+        Save a snapshot of the current state of the system
+        """
         print(f"Saving pic... run #{i}.")
 
         plt.subplot(1,2,1)
