@@ -98,6 +98,7 @@ def evolution(f, relax, L, T_init, T_max, dT, h=0, J=1):
             # save_frame(i,relax,lat,magnetization,T)
         i += 1
     # create_gif(i,relax)
+<<<<<<< HEAD
 
     obs = np.transpose(np.array(observables))
     # calculate correlation time for the magnetization
@@ -106,3 +107,8 @@ def evolution(f, relax, L, T_init, T_max, dT, h=0, J=1):
     blocked_data = [er.get_error_obs(m, T_init, T_max, dT, tau=tau, tau_error=tau_error) for m in obs]
 
     return frames, blocked_data
+=======
+    observables = np.transpose(np.array(observables))
+    # obs_errors = np.transpose(np.array(obs_errors))
+    return frames, observables, temps
+>>>>>>> 7ad78a89f8a8cf13bf2704fa733b577396ad7db0
