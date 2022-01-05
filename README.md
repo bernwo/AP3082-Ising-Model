@@ -2,8 +2,8 @@
 
 ## Authors
 
-* [juandaanieel](https://gitlab.kwant-project.org/juandaanieel)  
-* [kwo](https://gitlab.kwant-project.org/kwo)  
+* [juandaanieel](https://github.com/juandaanieel)  
+* [bernwo](https://github.com/bernwo)
 
 ## Programming language
 
